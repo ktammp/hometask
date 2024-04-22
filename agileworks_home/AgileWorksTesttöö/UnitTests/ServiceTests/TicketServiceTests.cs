@@ -138,8 +138,6 @@ public class TicketServiceTests : InMemoryDb
             Deadline = DateTime.Now.AddHours(10)
         });
 
-       
-
         await DbContext.SaveChangesAsync();
     }
 }

@@ -5,13 +5,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Microsoft.VisualStudio.TestPlatform.TestHost;
 
 namespace IntegrationTests;
 
-// ReSharper disable once ClassNeverInstantiated.Global
 public class CustomWebApplicationFactory<TStartup>
     : WebApplicationFactory<TStartup> where TStartup: class
 {
@@ -59,7 +56,6 @@ public class CustomWebApplicationFactory<TStartup>
                 if (dbInitialized == false)
                 {
                     dbInitialized = true;
-                    // DataSeeder.SeedData(db);
                     if (db.Tickets.Any()) return;
                     db.Tickets.Add(new Ticket() {
                         Id = Guid.ParseExact("bddd91db-6d50-4bdd-b13b-377d7497ede0", "D"),
